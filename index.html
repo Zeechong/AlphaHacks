@@ -36,7 +36,7 @@
 
             document.getElementById("send").onclick = function(){
                 ready();
-                firebase.database().ref('messages/').set({
+                firebase.database().ref("talk").push({
                     nameOfSender : name,
                     sentMessage : message
                 })
