@@ -15,7 +15,7 @@ firebase.initializeApp(firebaseConfig);
 let database = firebase.database();
 
 //chat app
-var name, message;
+let senderName, message;
 //checks for message and name blank, also sets up values for sending to database
 function ready(){ 
     let Nname = document.getElementById("name").value;
@@ -24,7 +24,7 @@ function ready(){
         alert("Please dont leave the name or message blank!");
         return false;
     } else {
-        name = Nname;
+        senderName = Nname;
         message = Nmessage;
         return true;
     }
@@ -34,12 +34,27 @@ function ready(){
 document.getElementById("send").onclick = function(){
     if(ready()){
         database.ref("messages").push({
-            name : name,
+            name : senderName,
             value : message
         })
+        
     }
+    document.querySelector('#message').value="";
     
 }
+
+document.addEventListener("keyup", function(event) {
+    if (event.key === 'Enter') {
+        if(ready()){
+            database.ref("messages").push({
+                name : senderName,
+                value : message
+                
+            });
+        }
+        document.querySelector('#message').value="";
+    }
+});
 
 //prints messages on the website
 let msgCount = 0;
