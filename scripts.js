@@ -56,7 +56,10 @@ let p = document.createElement("p");
 p.innerHTML = value;
 
 if(msgCount%2==0){
-    div.classList.add('gray');
+    div.classList.add('even_messages');
+}
+else{
+    div.classList.add('odd_messages');
 }
 msgCount++;
 
