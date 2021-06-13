@@ -9,6 +9,7 @@ body {
     background-color: rgb(249, 249, 249);
 }
 
+
 .even_messages{
     background-color:rgb(217, 238, 250);
 }
@@ -32,10 +33,9 @@ body {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     height:25px; 
-
-    display: flex;
-    justify-content: center;
 }
+.textbox:focus {outline:0;}
+
 
 #messages{
     font-family:'roboto mono';
@@ -53,6 +53,8 @@ body {
     margin-right:10px;
 } 
 #logo { display:inline-block; } 
+
+
 
 
 
@@ -76,7 +78,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #2098D1;
+    background: #6bc0e8;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
     -webkit-transform-origin: 0 50%;
@@ -109,5 +111,5 @@ body {
     transition-property: box-shadow;
   }
   .hvr-glow:hover, .hvr-glow:focus, .hvr-glow:active {
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 8px rgb(0, 131, 213);
   }
