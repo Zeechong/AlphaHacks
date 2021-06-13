@@ -43,12 +43,13 @@
                 } else {
                     name = Nname;
                     message = Nmessage;
+                    return true;
                 }
             }
 
             document.getElementById("send").onclick = function(){
                 if(ready()){
-                    database.ref("talk").push({
+                    database.ref("messages").push({
                         nameOfSender : name,
                         sentMessage : message
                     })
@@ -56,7 +57,7 @@
                 
             }
             let msgCount = 0;
-            database.ref("talk").on('child_added', function(message) {
+            database.ref("messages").on('child_added', function(message) {
             
             let messages = document.getElementById("messages");
             let name = message.val().nameOfSender;
