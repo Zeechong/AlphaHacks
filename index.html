@@ -7,15 +7,23 @@
         <link rel="stylesheet" href="styles.css">
         <title>AlphaChat</title>
         <link rel="preconnect" href="https://fonts.gstatic.com">
-       
+        <link rel="icon" href="media/alphahacks2.png">
     </head>
     <body>
-        <h1 id="heading">AlphaChat</h1><img id="logo" src="https://bit.ly/3wo0aFA" alt="insert logo here" width="45px">
+        <header>
+            <h1 id="heading">AlphaChat</h1><img id="logo" src="media/alphahacks.png" alt="AlphaHacks">
+        </header>
+        <div class="inputGroup">
+            <input id="name" class="name" type="text" autocomplete="off" placeholder="Username"></input>
+        </div>
+
+        <div id="messages">
+        </div>
         
-        <div id="messages"></div>
-        <input id="name" class="textbox hvr-glow" type="text" placeholder="your name"></input>
-        <input id="message" class="textbox hvr-glow" type="text" placeholder="message"></input>
-        <button id="send" class="hvr-sweep-to-right">Send</button>
+        <div class="inputGroup">
+            <input id="message" class="textbox" type="text" placeholder="Message" autocomplete="off"></input>
+            <button id="send" class="hvr-glow button">Send</button>
+        </div>
 
         <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
