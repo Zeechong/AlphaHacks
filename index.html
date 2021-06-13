@@ -12,7 +12,7 @@
         <input id="name" type="text" placeholder="your name"></input>
         <input id="message" type="text" placeholder="message"></input>
         <button id="send">Send</button>
-
+        <div id="messages"></div>
         <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.6.7/firebase-database.js"></script>
@@ -32,20 +32,56 @@
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
-
+            let database = firebase.database();
             var name, message;
             function ready(){
-                name = document.getElementById("name").value;
-                message = document.getElementById('message').value;
+                let Nname = document.getElementById("name").value;
+                let Nmessage = document.getElementById('message').value;
+                if(name.trim() === "" || message.trim() === ""){
+                    alert("Please dont leave the name or message blank!");
+                    return false;
+                } else {
+                    name = Nname;
+                    message = Nmessage;
+                }
             }
 
             document.getElementById("send").onclick = function(){
-                ready();
-                firebase.database().ref("talk").push({
-                    nameOfSender : name,
-                    sentMessage : message
-                })
+                if(ready()){
+                    database.ref("talk").push({
+                        nameOfSender : name,
+                        sentMessage : message
+                    })
+                }
+                
             }
+            let msgCount = 0;
+            database.ref("talk").on('child_added', function(message) {
+            
+            let messages = document.getElementById("messages");
+            let name = message.val().nameOfSender;
+            let value = message.val().sentMessage;
+
+            let div = document.createElement("div");
+            let span = document.createElement("span");
+            span.innerHTML = "@" + name;
+            let p = document.createElement("p");
+            p.innerHTML = value;
+            
+            if(msgCount%2==0){
+                div.classList.add('gray');
+            }
+            msgCount++;
+
+            div.appendChild(span);
+            div.appendChild(p);
+
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+            // <div>, span, p </div>
+
+            })
+
         </script>
     </body>
 </html>
