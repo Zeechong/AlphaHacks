@@ -7,3 +7,14 @@
 .gray{
     background-color:gray;
 }
+
+#messages{
+    position:relative;
+    width:50%;
+    left:25%;
+    overflow:auto;
+    height:700px;
+}
+
+
+
